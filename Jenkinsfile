@@ -12,8 +12,9 @@ pipeline {
     echo 'Building..'
     git 'https://github.com/harshahota/autotest.git'
     sh "npm install"
-    sh "npm run start"
-
+    sh "npm run build"
+    sh "npm run serve"
+    
    }
 
   }
