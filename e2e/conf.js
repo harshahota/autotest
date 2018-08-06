@@ -3,4 +3,10 @@ exports.config = {
     onPrepare: function () {
         browser.ignoreSynchronization = true;
     },
+    capabilities: {
+        'browserName': 'chrome',
+        'chromeOptions': {
+          'args': ['--headless']
+        }
+      },
 }
