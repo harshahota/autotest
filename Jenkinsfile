@@ -10,7 +10,7 @@ pipeline {
    steps {
 
     echo 'Building..'
-    git https://github.com/harshahota/autotest.git
+    git 'https://github.com/harshahota/autotest.git'
     sh "npm install"
     sh "npm run build"
     sh "serve -s build"
