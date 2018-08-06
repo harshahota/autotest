@@ -13,8 +13,7 @@ pipeline {
     git 'https://github.com/harshahota/autotest.git'
     sh "npm install"
     sh "npm run build"
-    sh "npm run serve"
-    
+
    }
 
   }
@@ -24,6 +23,10 @@ pipeline {
    steps {
 
     echo 'Testing..'
+    sh "npm run serve"
+    sh "npm run update-webdriver"
+    sh "npm run test"
+    sh "npm run serve-stop"
 
    }
 

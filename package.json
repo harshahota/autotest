@@ -5,6 +5,7 @@
   "dependencies": {
     "express": "^4.16.3",
     "forever": "^0.15.3",
+    "protractor": "^5.4.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-scripts": "1.1.4"
@@ -12,9 +13,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "serve": "forever start server.js",
-    "serve-stop": "forever stop server.js"
+    "serve-stop": "forever stop server.js",
+    "update-webdriver": "./node_modules/.bin/webdriver-manager update",
+    "test": "./node_modules/protractor/bin/protractor e2e/conf.js"
   }
 }
