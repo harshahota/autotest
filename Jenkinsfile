@@ -1,47 +1,38 @@
 pipeline {
+    agent any
+    tools {nodejs "node"}
 
- agent any
- tools {nodejs "node"}
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building..'
+                git 'https://github.com/harshahota/autotest.git'
+                sh "npm install"
+                sh "npm run build"
+            }
+        }
 
- stages {
+        stage('Test') {
+            steps {
+                    echo 'Testing..'
+                    sh "npm run serve"
+                    sh "npm run update-webdriver"
+                    sh "npm run test"
+                    sh "npm run serve-stop"
+            }
+        }
 
-  stage('Build') {
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
 
-   steps {
-
-    echo 'Building..'
-    git 'https://github.com/harshahota/autotest.git'
-    sh "npm install"
-    sh "npm run build"
-
-   }
-
-  }
-
-  stage('Test') {
-
-   steps {
-
-    echo 'Testing..'
-    sh "npm run serve"
-    sh "npm run update-webdriver"
-    sh "npm run test"
-    sh "npm run serve-stop"
-
-   }
-
-  }
-
-  stage('Deploy') {
-
-   steps {
-
-    echo 'Deploying....'
-
-   }
-
-  }
-
- }
+    }
+    post {
+        failure {
+            mail to: harshahota123@gmail.com, subject: 'The Pipeline failed :('
+        }
+    }
 
 }
