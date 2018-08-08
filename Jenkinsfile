@@ -31,7 +31,9 @@ pipeline {
     }
     post {
         failure {
-            mail to: harshahota123@gmail.com, subject: 'The Pipeline failed :('
+            mail body: "project build error is here" ,
+            subject: 'project build failed',
+            to: 'harshahota123@gmail.com'
         }
     }
 
