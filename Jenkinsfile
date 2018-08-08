@@ -2,40 +2,37 @@ pipeline {
     agent any
     tools {nodejs "node"}
 
-    try{
-        stages {
-            stage('Build') {
-                steps {
-                    echo 'Building..'
-                    git 'https://github.com/harshahota/autotest.git'
-                    sh "npm install"
-                    sh "npm run build"
-                }
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building..'
             }
-
-            stage('Test') {
-                steps {
-                        echo 'Testing..'
-                        sh "npm run serve"
-                        sh "npm run update-webdriver"
-                        sh "npm run test"
-                        sh "npm run serve-stop"
-                }
-            }
-
-            stage('Deploy') {
-                steps {
-                    echo 'Deploying....'
-                }
-            }
-
         }
+
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
+
     }
-    catch(err){
+    post {
+        success{
+            mail body: "project success is here" ,
+            subject: 'project success',
+            to: 'harshahota123@gmail.com'
+        }
+        failure {
             mail body: "project build error is here" ,
             subject: 'project build failed',
             to: 'harshahota123@gmail.com'
-            throw err
+        }
     }
 
 }
