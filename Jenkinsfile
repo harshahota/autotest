@@ -1,5 +1,6 @@
 pipeline {
-    agent any
+    agent {dockerfile true}
+
     stages {
         stage('Build') {
             steps {
@@ -19,18 +20,6 @@ pipeline {
             }
         }
 
-    }
-    post {
-        success{
-            mail body: "project success is here" ,
-            subject: 'project success',
-            to: 'harshahota123@gmail.com'
-        }
-        failure {
-            mail body: "project build error is here" ,
-            subject: 'project build failed',
-            to: 'harshahota123@gmail.com'
-        }
     }
 
 }
