@@ -18,5 +18,8 @@
     "serve-stop": "forever stop server.js",
     "update-webdriver": "./node_modules/.bin/webdriver-manager update",
     "test": "./node_modules/protractor/bin/protractor e2e/conf.js"
+  },
+  "devDependencies": {
+    "protractor-jasmine2-html-reporter": "0.0.7"
   }
 }
