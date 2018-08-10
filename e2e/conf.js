@@ -5,6 +5,9 @@ exports.config = {
     onPrepare: function () {
         browser.ignoreSynchronization = true;
     },
+    capabilities: {
+      'browserName': 'firefox'
+    },
     onPrepare: function() {
         jasmine.getEnv().addReporter(
           new Jasmine2HtmlReporter({
