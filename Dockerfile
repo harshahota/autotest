@@ -14,9 +14,10 @@ RUN echo "UseTLS=YES" >> /etc/ssmtp/ssmtp.conf
 RUN echo "UseSTARTTLS=YES" >> /etc/ssmtp/ssmtp.conf
 
 RUN git clone https://github.com/harshahota/autotest.git
-RUN autotest/npm install
-RUN autotest/npm run updatewebdriver
-RUN autotest/npm run test
-RUN zip -r report.zip autotest/target/report
+WORKDIR /autotest
+RUN npm install
+RUN npm run updatewebdriver
+RUN npm run test
+RUN zip -r report.zip target/report
 RUN echo -e "to: receiver@domain.tld\nsubject: test\n"| (cat - && uuencode /report.zip report.zip) | ssmtp harshahota123@gmail.com
 
