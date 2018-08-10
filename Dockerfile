@@ -1,7 +1,7 @@
 FROM ubuntu
 
 RUN apt-get update
-RUN apt-get install -y curl firefox npm git ssmtp sharutils zip default-jre
+RUN apt-get install -y curl firefox npm git ssmtp sharutils zip default-jre chromium
 
 RUN npm install -g npm
 
