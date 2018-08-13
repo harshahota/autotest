@@ -6,12 +6,7 @@ RUN apt-get update && apt-get -y install libxss1 libappindicator1 libindicator7 
 RUN curl -L -o google-chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 RUN dpkg -i ./google-chrome*.deb
 RUN apt-get install -yf
-RUN apt-get install -y curl git ssmtp sharutils zip default-jre wget 
-
-RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh
-RUN bash
-RUN nvm install node
-RUN nvm use node
+RUN apt-get install -y curl git ssmtp sharutils zip default-jre wget nodejs npm
 
 RUN npm install -g npm
 
