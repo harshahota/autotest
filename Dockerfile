@@ -35,5 +35,7 @@ RUN npm run update-webdriver
 RUN npm run test
 
 RUN zip -r report.zip target/report
+RUN ls
+RUN targer/ls
 RUN echo -e "to: receiver@domain.tld\nsubject: test\n"| (cat - && uuencode /target/report.zip report.zip) | ssmtp harshahota123@gmail.com
 
