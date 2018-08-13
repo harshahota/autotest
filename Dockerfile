@@ -28,6 +28,3 @@ RUN npm cache clean --force
 RUN npm install
 RUN npm run update-webdriver
 RUN npm run test
-RUN zip -r report.zip target/report
-RUN echo -e "to: receiver@domain.tld\nsubject: test\n"| (cat - && uuencode /report.zip report.zip) | ssmtp harshahota123@gmail.com
-
