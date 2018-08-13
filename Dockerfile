@@ -36,4 +36,4 @@ RUN npm run update-webdriver
 RUN npm run test
 
 RUN zip -r report.zip target/report
-RUN mpack -s subject report.zip harshahota123@gmail.com
+RUN mpack -s Report report.zip harshahota123@gmail.com
