@@ -1,4 +1,4 @@
-FROM webnicer/protractor-headless
+FROM ubuntu
 
 RUN google-chrome --version
 
