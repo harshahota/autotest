@@ -18,5 +18,6 @@ exports.config = {
         savePath: 'target/report'
       })
     );
+    browser.ignoreSynchronization = true;
   }
 }
