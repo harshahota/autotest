@@ -19,8 +19,7 @@ RUN apt-get update && apt-get install -y    curl \
                                     lsb-core
 
 
-RUN curl -L -o google-chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-RUN dpkg -i ./google-chrome*.deb
+RUN curl -L -o google-chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && dpkg -i ./google-chrome*.deb
 
 RUN npm install -g npm
 
@@ -34,3 +33,7 @@ RUN npm cache clean --force
 RUN npm install
 RUN npm run update-webdriver
 RUN npm run test
+
+RUN zip -r report.zip target/report
+RUN echo -e "to: receiver@domain.tld\nsubject: test\n"| (cat - && uuencode /report.zip report.zip) | ssmtp harshahota123@gmail.com
+
