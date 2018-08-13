@@ -8,7 +8,7 @@ describe('React Test', ()=> {
     });
 
     it('Count of nav options',()=>{
-        browser.sleep(2000);
+        browser.sleep(200);
         var cont = element(by.css('.App h1')).getText();
         expect(cont).toEqual('Welcome to React');
     })
