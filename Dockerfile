@@ -1,5 +1,7 @@
 FROM ubuntu
 
+
+RUN apt-get update
 RUN apt-get install -y curl git ssmtp sharutils zip default-jre wget nodejs npm  
 RUN apt-get install -y fonts-liberation libasound2 xdg-utils
 RUN apt-get update && apt-get -y install libxss1 libappindicator1 libindicator7 libappindicator3-1 lsb-core
