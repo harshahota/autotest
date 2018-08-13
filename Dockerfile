@@ -8,8 +8,10 @@ RUN dpkg -i ./google-chrome*.deb
 RUN apt-get install -yf
 RUN apt-get install -y curl git ssmtp sharutils zip default-jre wget 
 
-RUN curl -sL https://deb.nodesource.com/setup | sudo bash - && \
-RUN apt-get install -yq nodejs build-essential
+RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh
+RUN bash
+RUN nvm install node
+RUN nvm use node
 
 RUN npm install -g npm
 
