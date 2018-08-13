@@ -16,7 +16,8 @@ RUN apt-get update && apt-get install -y    curl \
                                     libappindicator1\
                                     libindicator7\
                                     libappindicator3-1\
-                                    lsb-core
+                                    lsb-core\
+                                    mpack
 
 
 RUN curl -L -o google-chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && dpkg -i ./google-chrome*.deb
@@ -35,5 +36,4 @@ RUN npm run update-webdriver
 RUN npm run test
 
 RUN zip -r report.zip target/report
-RUN echo -e "to: receiver@domain.tld\nsubject: test\n"| (cat - && uuencode / report.zip) | ssmtp harshahota123@gmail.com
-
+RUN mpack -s subject report.zip harshahota123@gmail.com
