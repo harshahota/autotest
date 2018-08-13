@@ -5,6 +5,7 @@ exports.config = {
   onPrepare: function () {
     browser.ignoreSynchronization = true;
   },
+  directConnect: true,
   capabilities: {
     'browserName': 'chrome',
     'chromeOptions': {
