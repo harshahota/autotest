@@ -25,7 +25,7 @@ WORKDIR /autotest
 RUN cat package.json
 RUN ls
 RUN npm install
-RUN npm cache clean
+RUN npm cache clean --force
 RUN npm run update-webdriver
 RUN npm run test
 RUN zip -r report.zip target/report
