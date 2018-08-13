@@ -21,6 +21,7 @@ RUN echo "UseSTARTTLS=YES" >> /etc/ssmtp/ssmtp.conf
 
 RUN git clone https://github.com/harshahota/autotest.git
 WORKDIR /autotest
+RUN cat package.json
 RUN ls
 RUN yarn
 RUN yarn run update-webdriver
