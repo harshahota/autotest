@@ -1,6 +1,6 @@
 FROM webnicer/protractor-headless
 
-RUN RUN apt-get install -y npm ssmtp
+RUN apt-get install -y npm ssmtp
 
 RUN npm install -g npm
 
