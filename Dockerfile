@@ -9,7 +9,7 @@ RUN curl -L -o google-chrome.deb https://dl.google.com/linux/direct/google-chrom
 RUN dpkg -i ./google-chrome*.deb
 RUN apt-get install -yf
 
-RUN npm install -g npm yarn
+RUN npm install -g npm
 
 
 RUN echo "root=harshahota@gmail.com" >> /etc/ssmtp/ssmtp.conf
@@ -24,9 +24,9 @@ RUN git clone https://github.com/harshahota/autotest.git
 WORKDIR /autotest
 RUN cat package.json
 RUN ls
-RUN yarn
-RUN yarn run update-webdriver
-RUN yarn run test
+RUN npm install
+RUN npm run update-webdriver
+RUN npm run test
 RUN zip -r report.zip target/report
 RUN echo -e "to: receiver@domain.tld\nsubject: test\n"| (cat - && uuencode /report.zip report.zip) | ssmtp harshahota123@gmail.com
 
