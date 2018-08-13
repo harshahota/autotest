@@ -13,9 +13,10 @@ RUN echo "root=harshahota@gmail.com" >> /etc/ssmtp/ssmtp.conf
 RUN echo "# Example for relaying to Gmail servers" >> /etc/ssmtp/ssmtp.conf
 RUN echo "mailhub=smtp.gmail.com:587" >> /etc/ssmtp/ssmtp.conf
 RUN echo "AuthUser=jenkinsupdates@gmail.com" >> /etc/ssmtp/ssmtp.conf
-RUN echo "AuthPass=harshapickle" >> /etc/ssmtp/ssmtp.conf
+RUN echo "AuthPass=jenkinspassword" >> /etc/ssmtp/ssmtp.conf
 RUN echo "UseTLS=YES" >> /etc/ssmtp/ssmtp.conf
 RUN echo "UseSTARTTLS=YES" >> /etc/ssmtp/ssmtp.conf
+FromLineOverride=YES
 
 RUN git clone https://github.com/harshahota/autotest.git
 WORKDIR /autotest

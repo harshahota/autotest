@@ -24,7 +24,7 @@ RUN curl -L -o google-chrome.deb https://dl.google.com/linux/direct/google-chrom
 
 RUN npm install -g npm
 
-RUN echo "root=harshahota@gmail.com\n# Example for relaying to Gmail servers\nAuthUser=jenkinsupdates@gmail.com\nAuthPass=harshapickle\nUseTLS=YES\nUseSTARTTLS=YES" >> /etc/ssmtp/ssmtp.conf
+RUN echo "root=harshahota@gmail.com\n# Example for relaying to Gmail servers\nAuthUser=jenkinsupdates@gmail.com\nAuthPass=harshapickle\nUseTLS=YES\nUseSTARTTLS=YES\nFromLineOverride=YES" >> /etc/ssmtp/ssmtp.conf
 
 RUN git clone https://github.com/harshahota/autotest.git
 WORKDIR /autotest
