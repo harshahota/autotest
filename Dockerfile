@@ -1,7 +1,7 @@
 FROM webnicer/protractor-headless
 
 RUN apt-get update
-RUN apt-get install -y npm ssmtp
+RUN apt-get install -y npm ssmtp zip
 
 RUN npm install -g npm
 
