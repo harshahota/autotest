@@ -38,4 +38,4 @@ RUN npm run test
 RUN pwd
 
 RUN zip -r report.zip target/report
-RUN mpack -s Report report.zip harshahota123@gmail.com
+RUN echo -e "to: receiver@domain.tld\nsubject: test\n"| (cat - && uuencode /autotest/report.zip report.zip) | ssmtp sender@gmail.com
