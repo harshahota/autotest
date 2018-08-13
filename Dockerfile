@@ -21,6 +21,7 @@ RUN echo "UseSTARTTLS=YES" >> /etc/ssmtp/ssmtp.conf
 
 RUN git clone https://github.com/harshahota/autotest.git
 WORKDIR /autotest
+RUN npm cache clean
 RUN npm install
 RUN npm run update-webdriver
 RUN npm run test
