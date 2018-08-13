@@ -2,6 +2,8 @@ FROM webnicer/protractor-headless
 
 RUN npm install -g npm
 
+RUN ls
+
 RUN echo "root=harshahota@gmail.com" >> /etc/ssmtp/ssmtp.conf
 RUN echo "# Example for relaying to Gmail servers" >> /etc/ssmtp/ssmtp.conf
 RUN echo "mailhub=smtp.gmail.com:587" >> /etc/ssmtp/ssmtp.conf
