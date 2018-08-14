@@ -1,28 +1,41 @@
 FROM ubuntu
+RUN apt-get update && apt-get install -y    curl \
+                                    git \
+                                    ssmtp \
+                                    sharutils \
+                                    zip \
+                                    default-jre \
+                                    wget \
+                                    nodejs \
+                                    npm \
+                                    firefox\
+                                    fonts-liberation\
+                                    libasound2\
+                                    xdg-utils\
+                                    libxss1\
+                                    libappindicator1\
+                                    libindicator7\
+                                    libappindicator3-1\
+                                    lsb-core\
+                                    mpack
 
-RUN apt-get update
-RUN apt-get install -y curl firefox npm git ssmtp sharutils zip default-jre wget 
-RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - 
-RUN sh -c 'echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-RUN apt-get update
-RUN apt-get install -y google-chrome-stable
+
+RUN curl -L -o google-chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && dpkg -i ./google-chrome*.deb
 
 RUN npm install -g npm
 
-RUN echo "root=harshahota@gmail.com" >> /etc/ssmtp/ssmtp.conf
-RUN echo "# Example for relaying to Gmail servers" >> /etc/ssmtp/ssmtp.conf
-RUN echo "mailhub=smtp.gmail.com:587" >> /etc/ssmtp/ssmtp.conf
-RUN echo "AuthUser=jenkinsupdates@gmail.com" >> /etc/ssmtp/ssmtp.conf
-RUN echo "AuthPass=jenkinspassword" >> /etc/ssmtp/ssmtp.conf
-RUN echo "UseTLS=YES" >> /etc/ssmtp/ssmtp.conf
-RUN echo "UseSTARTTLS=YES" >> /etc/ssmtp/ssmtp.conf
-FromLineOverride=YES
+RUN echo "root=harshahota@gmail.com\nmailhub=smtp.gmail.com:587\nAuthUser=jenkinsupdates@gmail.com\nAuthPass=jenkinspassword\nUseTLS=YES\nUseSTARTTLS=YES\nFromLineOverride=YES" >> /etc/ssmtp/ssmtp.conf
 
 RUN git clone https://github.com/harshahota/autotest.git
 WORKDIR /autotest
+RUN cat package.json
+RUN ls
+RUN npm cache clean --force
 RUN npm install
 RUN npm run update-webdriver
 RUN npm run test
-RUN zip -r report.zip target/report
-RUN echo -e "to: receiver@domain.tld\nsubject: test\n"| (cat - && uuencode /report.zip report.zip) | ssmtp harshahota123@gmail.com
 
+RUN pwd
+
+RUN zip -r report.zip target/report
+RUN echo -e "to: receiver@domain.tld\nsubject: Report\n"| (cat - && uuencode /autotest/report.zip report.zip) | ssmtp harshahota123@gmail.com
