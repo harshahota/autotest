@@ -26,11 +26,9 @@ RUN npm install -g npm
 
 RUN echo "root=harshahota@gmail.com\nmailhub=smtp.gmail.com:587\nAuthUser=jenkinsupdates@gmail.com\nAuthPass=jenkinspassword\nUseTLS=YES\nUseSTARTTLS=YES\nFromLineOverride=YES" >> /etc/ssmtp/ssmtp.conf
 
-RUN git clone https://github.com/harshahota/autotest.git
-WORKDIR /autotest
-RUN cat package.json
-RUN ls
-RUN npm cache clean --force
+
+ADD . /app
+WORKDIR /app
 RUN npm install
 RUN npm run update-webdriver
 RUN npm run test
