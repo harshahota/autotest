@@ -12,14 +12,6 @@ pipeline {
             steps {
                 script {
                     echo 'Testing..'
-                    try{
-                        sh 'npm run test'
-                        echo 'success'
-                    }
-                    catch(Exception e){
-                        echo 'Failed'
-                        echo e
-                    }
                 }
             }
         }

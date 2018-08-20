@@ -29,6 +29,4 @@ RUN echo "root=harshahota@gmail.com\nmailhub=smtp.gmail.com:587\nAuthUser=jenkin
 
 ADD . /app
 WORKDIR /app
-RUN ls
-RUN npm install
-RUN npm run update-webdriver
+RUN npm install && run update-webdriver && run test
