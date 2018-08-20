@@ -16,7 +16,9 @@ RUN apt-get update && apt-get install -y    curl \
                                     libindicator7\
                                     libappindicator3-1\
                                     lsb-core\
-                                    mpack
+                                    mpack\
+                                    mailx\
+                                    mutt
 
 
 RUN curl -L -o google-chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && dpkg -i ./google-chrome*.deb
