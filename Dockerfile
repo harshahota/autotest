@@ -8,7 +8,6 @@ RUN apt-get update && apt-get install -y    curl \
                                     wget \
                                     nodejs \
                                     npm \
-                                    firefox\
                                     fonts-liberation\
                                     libasound2\
                                     xdg-utils\
