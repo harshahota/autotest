@@ -17,7 +17,7 @@
     "serve": "forever start server.js",
     "serve-stop": "forever stop server.js",
     "update-webdriver": "./node_modules/.bin/webdriver-manager update --gecko false --versions.standalone 3.8.1 --versions.chrome 2.38",
-    "test": "./node_modules/protractor/bin/protractor e2e/conf.js"
+    "test": "./node_modules/protractor/bin/protractor e2e/conf.js && sh pass.sh || sh error.sh"
   },
   "devDependencies": {
     "protractor-jasmine2-html-reporter": "0.0.7"
