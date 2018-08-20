@@ -4,7 +4,7 @@ describe('React Test', ()=> {
       });
     it('should have a title', ()=> {
         browser.sleep(2000);
-        expect(browser.getTitle()).toEqual('React');
+        expect(browser.getTitle()).toEqual('React App');
     });
 
     // it('Count of nav options',()=>{
