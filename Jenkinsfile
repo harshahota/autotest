@@ -1,8 +1,9 @@
 pipeline {
-    agent {dockerfile true}
+    agent none
 
     stages {
         stage('Build') {
+            agent {dockerfile true}
             steps {
                 echo 'Building..'
             }
