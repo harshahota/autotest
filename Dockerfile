@@ -17,7 +17,6 @@ RUN apt-get update && apt-get install -y    curl \
                                     libappindicator3-1\
                                     lsb-core\
                                     mpack\
-                                    mailx\
                                     mutt\
                                     mailutils
 
