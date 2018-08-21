@@ -1,6 +1,9 @@
 node {
-    def email = sh 'git rev-parse HEAD | git show | grep "Author" | grep -o -i "<.*>" | tr -d "<" | tr -d ">"'
   try {
+
+    define {
+        def email = sh 'git rev-parse HEAD | git show | grep "Author" | grep -o -i "<.*>" | tr -d "<" | tr -d ">"'
+    }
     stage('Checkout') {
       checkout scm
     }
@@ -8,7 +11,6 @@ node {
       sh 'git --version'
     }
     stage('checking email id') {
-        echo $(email)
       sh 'echo $(email)'
     }
     stage('Build Docker test'){
