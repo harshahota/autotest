@@ -1,6 +1,6 @@
 node {
     environment {
-     email = sh 'git rev-parse HEAD | git show | grep "Author" | grep -o -i "<.*>" | tr -d "<" | tr -d ">"
+     email = sh 'git rev-parse HEAD | git show | grep "Author" | grep -o -i "<.*>" | tr -d "<" | tr -d ">"'
    }
   try {
     stage('Checkout') {
