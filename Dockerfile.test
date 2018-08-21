@@ -32,7 +32,7 @@ RUN echo "root=harshahota@gmail.com\nmailhub=smtp.gmail.com:587\nAuthUser=jenkin
 
 ADD . /app
 WORKDIR /app
-ARG MAIL = sample
+ARG MAIL=sample
 RUN echo "................................................................."
 RUN echo "${MAIL}"
 RUN echo ".................................................................."
