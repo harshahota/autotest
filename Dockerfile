@@ -25,6 +25,8 @@ RUN curl -L -o google-chrome.deb https://dl.google.com/linux/direct/google-chrom
 
 RUN npm install -g npm
 
+RUN npm cache clean --force
+
 RUN echo "root=harshahota@gmail.com\nmailhub=smtp.gmail.com:587\nAuthUser=jenkinsupdates@gmail.com\nAuthPass=jenkinspassword\nUseTLS=YES\nUseSTARTTLS=YES\nFromLineOverride=YES" >> /etc/ssmtp/ssmtp.conf
 
 
