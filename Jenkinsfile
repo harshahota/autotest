@@ -1,11 +1,10 @@
 node {
   try {
-
-    define {
-        def email = sh 'git rev-parse HEAD | git show | grep "Author" | grep -o -i "<.*>" | tr -d "<" | tr -d ">"'
-    }
     stage('Checkout') {
       checkout scm
+      script {
+        def email = sh 'git rev-parse HEAD | git show | grep "Author" | grep -o -i "<.*>" | tr -d "<" | tr -d ">"'
+      }
     }
     stage('Environment') {
       sh 'git --version'
