@@ -6,10 +6,9 @@ node {
     }
     stage('Environment') {
       sh 'git --version'
-      sh 'docker -v'
-      sh 'printenv'
     }
     stage('checking email id') {
+        echo $(email)
       sh 'echo $(email)'
     }
     stage('Build Docker test'){
