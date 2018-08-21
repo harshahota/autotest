@@ -12,7 +12,7 @@ node {
       sh 'printenv'
     }
     stage('checking email id') {
-      echo '$(email)'
+      sh 'echo $(email)'
     }
     stage('Build Docker test'){
      sh 'docker build -t react-test -f Dockerfile.test --build-arg MAIL=working .'
