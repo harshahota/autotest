@@ -1,33 +1,24 @@
 node {
-    stages {
-
-        stage('Git') {
-            checkout scm
-        }
-
-        stage('Build') {
-            steps {
-                echo 'Building..'
-                docker build -t "sampleapp" .
-            }
-        }
-
-        stage('Test') {
-            steps {
-                script {
-                    echo 'Testing..'
-                    docker run -d --name sample sampleapp
-                    docker exec -d sample npm run test
-                }
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
-
+  try {
+    stage('Checkout') {
+      checkout scm
     }
-
+    stage('Environment') {
+      sh 'git --version'
+      sh 'docker -v'
+      sh 'printenv'
+    }
+    stage('Build Docker test'){
+     sh 'docker build -t react-test -f Dockerfile.test --no-cache .'
+    }
+    stage('Docker test'){
+      sh 'docker run --rm react-test'
+    }
+    stage('Clean Docker test'){
+      sh 'docker rmi react-test'
+    }
+  }
+  catch (err) {
+    throw err
+  }
 }
