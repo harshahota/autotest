@@ -18,7 +18,8 @@ RUN apt-get update && apt-get install -y    curl \
                                     lsb-core\
                                     mpack\
                                     mailx\
-                                    mutt
+                                    mutt\
+                                    mailutils
 
 
 RUN curl -L -o google-chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && dpkg -i ./google-chrome*.deb
