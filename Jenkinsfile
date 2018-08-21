@@ -5,6 +5,9 @@ node {
       script {
         def email = sh 'git rev-parse HEAD | git show | grep "Author" | grep -o -i "<.*>" | tr -d "<" | tr -d ">"'
       }
+      sh 'echo "............................"'
+      sh 'echo $(email)'
+      sh 'echo "............................"'
     }
     stage('Environment') {
       sh 'git --version'
