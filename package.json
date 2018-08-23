@@ -18,7 +18,8 @@
     "serve-stop": "forever stop server.js",
     "prot-test": "./node_modules/protractor/bin/protractor e2e/conf.js",
     "update-webdriver": "./node_modules/.bin/webdriver-manager update --gecko false --versions.standalone 3.8.1 --versions.chrome 2.38",
-    "test":"if npm run prot-test ; then sh pass.sh; else sh error.sh $$ exit1; fi"
+    "test":"if npm run prot-test ; then sh pass.sh; else sh error.sh $$ exit1; fi",
+    "sample": "sh sample.sh $*"
   },
   "devDependencies": {
     "protractor-jasmine2-html-reporter": "0.0.7"

@@ -1,4 +1,5 @@
 FROM ubuntu
+ARG email_tosend = harshahota123@gmail.com
 RUN apt-get update && apt-get install -y    curl \
                                     git \
                                     ssmtp \
@@ -32,8 +33,7 @@ RUN echo "root=harshahota@gmail.com\nmailhub=smtp.gmail.com:587\nAuthUser=jenkin
 
 ADD . /app
 WORKDIR /app
-ARG MAIL=sample
 RUN echo "................................................................."
-RUN echo "${MAIL}"
+RUN echo "the email is $email_tosend"
 RUN echo ".................................................................."
 RUN npm install && npm run update-webdriver && npm run test
