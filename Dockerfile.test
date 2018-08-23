@@ -1,5 +1,5 @@
 FROM ubuntu
-ARG email_tosend = harshahota123@gmail.com
+ARG email_tosend=harshahota123@gmail.com
 RUN apt-get update && apt-get install -y    curl \
                                     git \
                                     ssmtp \
