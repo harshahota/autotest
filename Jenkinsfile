@@ -2,9 +2,9 @@ node {
   try {
     stage('Checkout') {
       sh 'echo "............................"'
-      sh 'echo $(env.body)'
-      sh 'echo $(env.payload)'
-      sh 'echo $(BODY)'
+      sh 'echo $(data)'
+      sh 'echo $(env.data)'
+      sh 'echo $data'
       sh 'echo $(PAYLOAD)'
       sh 'echo "............................"'
     }
