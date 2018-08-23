@@ -6,7 +6,7 @@ node {
       sh 'echo $(env.data)'
       sh 'echo $data'
       sh 'echo $(PAYLOAD)'
-      sh 'echo "..........................."'
+      sh 'echo ".........................."'
     }
     stage('Environment') {
       sh 'git --version'
