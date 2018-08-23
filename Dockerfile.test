@@ -36,4 +36,4 @@ WORKDIR /app
 RUN echo "................................................................."
 RUN echo "the email is $email_tosend"
 RUN echo ".................................................................."
-RUN npm install && npm run update-webdriver && npm run test -- $email_tosend
+RUN npm config set autotest:email $email_tosend && npm install && npm run update-webdriver && npm run test
