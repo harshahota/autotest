@@ -8,22 +8,7 @@ node {
       echo 'the commit id is:' + commit_id
       echo 'the commit email is:' + commit_email
       sh 'echo ".........................."'
-      checkout([$class: 'GitSCM', branches: [[name: commit_id]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/harshahota/autotest.git']]])
-    }
-    stage('Environment') {
-      sh 'git --version'
-    }
-    stage('checking email id') {
-      sh 'echo $(email)'
-    }
-    stage('Build Docker test'){
-     sh 'docker build -t react-test -f Dockerfile.test --build-arg email_tosend=$commit_email .'
-    }
-    stage('Docker test'){
-      sh 'docker run --rm react-test'
-    }
-    stage('Clean Docker test'){
-      sh 'docker rmi react-test'
+      sleep 300
     }
   }
   catch (err) {

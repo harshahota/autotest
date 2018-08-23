@@ -1,13 +1,14 @@
 node {
   try {
     stage('Checkout') {
-      checkout scm
-      script {
-        def email = sh 'git rev-parse HEAD | git show | grep "Author" | grep -o -i "<.*>" | tr -d "<" | tr -d ">"'
-      }
-      sh 'echo "............................"'
-      sh 'echo $(email)'
-      sh 'echo "............................"'
+      sh 'echo ".........................."'
+      echo 'Hello World webhook'
+      echo 'git repository name is :' + repository_name
+      echo 'author of commit is :' + commit_author
+      echo 'the commit id is:' + commit_id
+      echo 'the commit email is:' + commit_email
+      sh 'echo ".........................."'
+      checkout([$class: 'GitSCM', branches: [[name: commit_id]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/harshahota/autotest.git']]])
     }
     stage('Environment') {
       sh 'git --version'
@@ -16,7 +17,7 @@ node {
       sh 'echo $(email)'
     }
     stage('Build Docker test'){
-     sh 'docker build -t react-test -f Dockerfile.test --build-arg MAIL=working .'
+     sh 'docker build -t react-test -f Dockerfile.test --build-arg email_tosend=$commit_email .'
     }
     stage('Docker test'){
       sh 'docker run --rm react-test'
