@@ -1,7 +1,7 @@
 node {
   try {
     stage('Checkout') {
-      sh 'echo "............................"'
+      sh 'echo "..........................."'
       sh 'echo $(data)'
       sh 'echo $(env.data)'
       sh 'echo $data'
