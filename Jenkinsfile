@@ -17,7 +17,7 @@ node {
       sh 'echo $(email)'
     }
     stage('Build Docker test'){
-     sh 'docker build -t react-test -f Dockerfile.test --build-arg MAIL=$commit_email .'
+     sh 'docker build -t react-test -f Dockerfile.test --build-arg email_tosend=$commit_email .'
     }
     stage('Docker test'){
       sh 'docker run --rm react-test'
