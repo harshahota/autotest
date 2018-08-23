@@ -9,7 +9,7 @@ node {
       echo 'the commit email is:' + commit_email
       sh 'echo ".........................."'
       checkout([$class: 'GitSCM', branches: [[name: commit_id]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/harshahota/autotest.git']]])
-      sh ls
+      sh 'ls'
     }
     stage('Environment') {
       sh 'git --version'
