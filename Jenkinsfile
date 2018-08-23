@@ -2,10 +2,9 @@ node {
   try {
     stage('Checkout') {
       sh 'echo ".........................."'
-      sh 'echo $(data)'
-      sh 'echo $(env.data)'
-      sh 'echo $data'
-      sh 'echo $(PAYLOAD)'
+      echo 'Hello World webhook'
+      echo 'git repository name is :' + repository_name
+      echo 'author of commit is :' + commit_author
       sh 'echo ".........................."'
     }
     stage('Environment') {
